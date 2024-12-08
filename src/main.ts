@@ -12,11 +12,16 @@ const multiAvatarEl = document.querySelector(".multi-avatar") as HTMLDivElement;
 const diceBearContentEl = document.querySelector(
   ".dice-bear-content"
 ) as HTMLDivElement;
-const generateButton = document.querySelector("#generate") as HTMLButtonElement;
 const diceBearTab = document.querySelector("#diceBear") as HTMLButtonElement;
 const multiAvatarTab = document.querySelector(
   "#multiAvatar"
 ) as HTMLButtonElement;
+
+const generateButton = document.querySelector("#generate") as HTMLButtonElement;
+const insertButton = document.querySelector("#insert") as HTMLButtonElement;
+
+let multiAvatarSvg = "";
+let diceBearSvg = "";
 
 multiAvatarTab.onclick = () => {
   diceBearTab.setAttribute("aria-selected", "false");
@@ -45,6 +50,37 @@ generateButton.addEventListener("click", async () => {
   }
 });
 
+const handleInsert = () => {
+  if (
+    multiAvatarSvg &&
+    multiAvatarTab.getAttribute("aria-selected") === "true"
+  ) {
+    parent.postMessage(
+      {
+        type: "insert",
+        data: multiAvatarSvg,
+      },
+      "*"
+    );
+
+    return;
+  }
+
+  if (diceBearSvg && diceBearTab.getAttribute("aria-selected") === "true") {
+    parent.postMessage(
+      {
+        type: "insert",
+        data: diceBearSvg,
+      },
+      "*"
+    );
+
+    return;
+  }
+};
+
+insertButton.addEventListener("click", handleInsert);
+
 const handleGenerate = debounce(() => {
   console.log("Generating...");
   axiosInstance
@@ -52,6 +88,7 @@ const handleGenerate = debounce(() => {
     .then((e) => {
       console.log(e.data);
       multiAvatarEl.innerHTML = e.data;
+      setSvg(true, e.data);
     })
     .catch((e) => console.log("Error: ", e))
     .finally(() => {
@@ -68,3 +105,12 @@ window.addEventListener("message", (event) => {
 });
 
 handleGenerate();
+
+export function setSvg(isMultiAvatar = true, data: string) {
+  if (isMultiAvatar) {
+    multiAvatarSvg = data;
+    return;
+  }
+
+  diceBearSvg = data;
+}

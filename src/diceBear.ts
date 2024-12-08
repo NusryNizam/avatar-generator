@@ -1,5 +1,6 @@
 import { createAvatar, StyleMeta } from "@dicebear/core";
 import { avataaars } from "@dicebear/collection";
+import { setSvg } from "./main";
 
 const options = [
   "Avataaars",
@@ -31,13 +32,17 @@ options.forEach((option) => {
 });
 
 async function generateOnLoad() {
-  avatarDiceBearEl.innerHTML = await generateAvatar();
+  const str = await generateAvatar();
+  avatarDiceBearEl.innerHTML = str;
+  setSvg(false, str);
 }
 
 generateOnLoad();
 
 selectElement.addEventListener("change", async () => {
-  avatarDiceBearEl.innerHTML = await generateAvatar();
+  const str = await generateAvatar();
+  avatarDiceBearEl.innerHTML = str;
+  setSvg(false, str);
 });
 
 export async function generateAvatar() {
@@ -53,6 +58,7 @@ export async function generateAvatar() {
         seed: Math.random().toString(),
       }).toJson().svg;
       avatarDiceBearEl.innerHTML = svgStr;
+      setSvg(false, svgStr);
       return svgStr;
 
     case "Bootstrap Icons":
@@ -62,6 +68,8 @@ export async function generateAvatar() {
         seed: Math.random().toString(),
       }).toJson().svg;
       avatarDiceBearEl.innerHTML = svgStr;
+      setSvg(false, svgStr);
+
       return svgStr;
 
     case "Initials":
@@ -71,6 +79,8 @@ export async function generateAvatar() {
         seed: getRandomLetters(),
       }).toJson().svg;
       avatarDiceBearEl.innerHTML = svgStr;
+      setSvg(false, svgStr);
+
       return svgStr;
 
     case "Avatar Illustration System":
@@ -80,6 +90,8 @@ export async function generateAvatar() {
         seed: Math.random().toString(),
       }).toJson().svg;
       avatarDiceBearEl.innerHTML = svgStr;
+      setSvg(false, svgStr);
+
       return svgStr;
 
     case "Miniavs - Free Avatar Creator":
@@ -89,6 +101,8 @@ export async function generateAvatar() {
         seed: Math.random().toString(),
       }).toJson().svg;
       avatarDiceBearEl.innerHTML = svgStr;
+      setSvg(false, svgStr);
+
       return svgStr;
 
     case "Notionists":
@@ -98,6 +112,8 @@ export async function generateAvatar() {
         seed: Math.random().toString(),
       }).toJson().svg;
       avatarDiceBearEl.innerHTML = svgStr;
+      setSvg(false, svgStr);
+
       return svgStr;
 
     case "Open Peeps":
@@ -107,6 +123,8 @@ export async function generateAvatar() {
         seed: Math.random().toString(),
       }).toJson().svg;
       avatarDiceBearEl.innerHTML = svgStr;
+      setSvg(false, svgStr);
+
       return svgStr;
 
     case "Personas by Draftbit":
@@ -116,6 +134,8 @@ export async function generateAvatar() {
         seed: Math.random().toString(),
       }).toJson().svg;
       avatarDiceBearEl.innerHTML = svgStr;
+      setSvg(false, svgStr);
+
       return svgStr;
 
     default:
@@ -124,13 +144,15 @@ export async function generateAvatar() {
         seed: Math.random().toString(),
       }).toJson().svg;
       avatarDiceBearEl.innerHTML = svgStr;
+      setSvg(false, svgStr);
+
       return svgStr;
   }
 }
 
 function populateMeta(data: StyleMeta) {
   metaEl.innerHTML = `
-    <div>By 
+    <div>${data.title} by 
         <a href="${data.homepage}" target="_blank">${data.creator}</a> 
     </div>
     <div>
