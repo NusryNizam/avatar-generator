@@ -82,11 +82,9 @@ const handleInsert = () => {
 insertButton.addEventListener("click", handleInsert);
 
 const handleGenerate = debounce(() => {
-  console.log("Generating...");
   axiosInstance
     .get(Math.random().toString())
     .then((e) => {
-      console.log(e.data);
       multiAvatarEl.innerHTML = e.data;
       setSvg(true, e.data);
     })

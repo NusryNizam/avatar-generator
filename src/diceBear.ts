@@ -46,7 +46,6 @@ selectElement.addEventListener("change", async () => {
 });
 
 export async function generateAvatar() {
-  console.log("Triggereed");
   let importedPack;
   let svgStr;
 
