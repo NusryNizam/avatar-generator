@@ -1,6 +1,6 @@
 penpot.ui.open("Avatar Generator", `?theme=${penpot.theme}`, {
-  width: 260,
-  height: 460,
+  width: 270,
+  height: 540,
 });
 
 penpot.ui.onMessage<string>((message) => {
