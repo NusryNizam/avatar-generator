@@ -1,6 +1,7 @@
 {
   "name": "Avatar Generator",
   "code": "plugin.js",
+  "icon": "/icon.png",
   "description": "Generate avatars for your designs",
   "permissions": ["content:read", "content:write"]
 }
