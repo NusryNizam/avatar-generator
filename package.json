@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "@penpot/plugin-styles": "1.0.0",
-    "@penpot/plugin-types": "1.0.0"
+    "@penpot/plugin-types": "1.0.0",
+    "axios": "^1.7.9"
   },
   "devDependencies": {
     "typescript": "^5.7.2",

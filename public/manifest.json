@@ -1,6 +1,6 @@
 {
-  "name": "Penpot starter plugin",
+  "name": "Avatar Generator",
   "code": "plugin.js",
-  "description": "This is a starter plugin for Penpot",
+  "description": "Generate avatars for your designs",
   "permissions": ["content:read", "content:write"]
 }
