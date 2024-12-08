@@ -9,6 +9,20 @@ document.body.dataset.theme = searchParams.get("theme") ?? "light";
 
 const avatarEl = document.querySelector(".avatar") as HTMLDivElement;
 const generateButton = document.querySelector("#generate") as HTMLButtonElement;
+const multiAvatarButton = document.querySelector(
+  "#multiAvatar"
+) as HTMLButtonElement;
+const diceBearButton = document.querySelector("#diceBear") as HTMLButtonElement;
+
+multiAvatarButton.onclick = () => {
+  diceBearButton.setAttribute("aria-selected", "false");
+  multiAvatarButton.setAttribute("aria-selected", "true");
+};
+
+diceBearButton.onclick = () => {
+  multiAvatarButton.setAttribute("aria-selected", "false");
+  diceBearButton.setAttribute("aria-selected", "true");
+};
 
 generateButton.addEventListener("click", () => {
   // send message to plugin.ts

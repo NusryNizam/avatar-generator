@@ -3,14 +3,16 @@
 [data-theme="dark"] {
   color-scheme: dark;
   --tabs-bg-color: var(--db-secondary);
-  --color-background-quarternary: var(--db-quaternary);
+  --color-background-quaternary: var(--db-quaternary);
   --color-accent-primary: var(--da-primary);
+  --tabs-item-fg-color-hover-not-selected: var(--df-primary);
 }
 [data-theme="light"] {
   color-scheme: light;
   --tabs-bg-color: var(--lb-secondary);
-  --color-background-quarternary: var(--lb-quaternary);
+  --color-background-quaternary: var(--lb-quaternary);
   --color-accent-primary: var(--la-primary);
+  --tabs-item-fg-color-hover-not-selected: var(--lf-primary);
 }
 
 body {
@@ -73,7 +75,8 @@ p {
   color: var(--tabs-item-fg-color);
 }
 
-.tab:hover {
-  --tabs-item-fg-color-hover: var(--tabs-item-fg-color-hover);
+.tab[aria-selected="false"]:hover {
+  --tabs-item-fg-color-hover: var(--tabs-item-fg-color-hover-not-selected);
   background: var(--tabs-item-bg-color-hover);
+  color: var(--tabs-item-fg-color-hover);
 }
