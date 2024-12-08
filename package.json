@@ -7,6 +7,8 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
+    "@dicebear/collection": "^9.2.2",
+    "@dicebear/core": "^9.2.2",
     "@penpot/plugin-styles": "1.0.0",
     "@penpot/plugin-types": "1.0.0",
     "axios": "^1.7.9"
