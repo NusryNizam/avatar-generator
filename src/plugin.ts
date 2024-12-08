@@ -1,4 +1,7 @@
-penpot.ui.open("Avatar Generator", `?theme=${penpot.theme}`);
+penpot.ui.open("Avatar Generator", `?theme=${penpot.theme}`, {
+  width: 240,
+  height: 360,
+});
 
 penpot.ui.onMessage<string>((message) => {
   if (message === "create-text") {

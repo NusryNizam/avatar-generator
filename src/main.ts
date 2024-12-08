@@ -1,13 +1,37 @@
+import { axiosInstance } from "./api";
+import { debounce } from "./utils";
 import "./style.css";
+import "./loader.css";
 
 // get the current theme from the URL
 const searchParams = new URLSearchParams(window.location.search);
 document.body.dataset.theme = searchParams.get("theme") ?? "light";
 
-document.querySelector("[data-handler='create-text']")?.addEventListener("click", () => {
+const avatarEl = document.querySelector(".avatar") as HTMLDivElement;
+const generateButton = document.querySelector("#generate") as HTMLButtonElement;
+
+generateButton.addEventListener("click", () => {
   // send message to plugin.ts
-  parent.postMessage("create-text", "*");
+  // parent.postMessage("create-text", "*");
+  generateButton.disabled = true;
+  generateButton.innerHTML = `<div class="loader center " id="loader"></div>`;
+  handleGenerate();
 });
+
+const handleGenerate = debounce(() => {
+  console.log("Generating...");
+  axiosInstance
+    .get(Math.random().toString())
+    .then((e) => {
+      console.log(e.data);
+      avatarEl.innerHTML = e.data;
+    })
+    .catch((e) => console.log("Error: ", e))
+    .finally(() => {
+      generateButton.disabled = false;
+      generateButton.innerHTML = "Generate";
+    });
+}, 1000);
 
 // Listen plugin.ts messages
 window.addEventListener("message", (event) => {
@@ -15,3 +39,6 @@ window.addEventListener("message", (event) => {
     document.body.dataset.theme = event.data.theme;
   }
 });
+
+// FIXME: Uncomment after dev
+// handleGenerate();

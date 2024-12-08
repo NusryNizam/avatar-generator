@@ -6,9 +6,44 @@
     <title>Avatar Generator</title>
   </head>
   <body>
-    <button type="button" data-appearance="primary" data-handler="create-text">
-      Create text
-    </button>
+    <!-- <nav class="tab-nav">
+      <ul class="tab-list" role="tablist">
+        <li>
+          <button class="tab" role="tab" aria-selected="true" id="tab1">
+            Tab 1
+          </button>
+        </li>
+        <li>
+          <button class="tab" role="tab" aria-selected="false" id="tab2">
+            Tab 2
+          </button>
+        </li>
+      </ul>
+    </nav> -->
+
+    <!-- <button type="button" data-handler="tab1" id="tab1" role="tab">
+      Generate
+    </button> -->
+    <div class="avatar"></div>
+    <div class="button-container">
+      <button
+        type="button"
+        data-appearance="secondary"
+        data-handler="generate"
+        id="generate"
+      >
+        Generate
+      </button>
+
+      <button
+        type="button"
+        data-appearance="primary"
+        data-handler="insert"
+        id="insert"
+      >
+        Add to Canvas
+      </button>
+    </div>
 
     <script type="module" src="/src/main.ts"></script>
   </body>

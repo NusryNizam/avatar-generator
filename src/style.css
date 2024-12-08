@@ -1,5 +1,18 @@
 @import "@penpot/plugin-styles/styles.css";
 
+[data-theme="dark"] {
+  color-scheme: dark;
+  --tabs-bg-color: var(--db-secondary);
+  --color-background-quarternary: var(--db-quaternary);
+  --color-accent-primary: var(--da-primary);
+}
+[data-theme="light"] {
+  color-scheme: light;
+  --tabs-bg-color: var(--lb-secondary);
+  --color-background-quarternary: var(--lb-quaternary);
+  --color-accent-primary: var(--la-primary);
+}
+
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,4 +24,56 @@ body {
 
 p {
   margin-block-end: 0.75rem;
+}
+
+.avatar {
+  width: 200px;
+  aspect-ratio: 1;
+  margin-bottom: 0.75rem;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tab-nav {
+  display: grid;
+  gap: 0.125rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.125rem;
+  background-color: var(--tabs-bg-color);
+}
+
+.tab-list {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.125rem;
+  width: 100%;
+  margin-block-end: 0;
+  border-radius: 0.5rem;
+}
+
+.tab {
+  --tabs-item-bg-color: var(--color-background-secondary);
+  --tabs-item-fg-color: var(--color-foreground-secondary);
+  --tabs-item-fg-color-hover: var(--color-foreground-primary);
+  --tabs-item-outline-color: none;
+  background: var(--tabs-item-bg-color);
+  color: var(--tabs-item-fg-color);
+}
+
+.tab[aria-selected="true"] {
+  --tabs-item-bg-color: var(--color-background-quaternary);
+  --tabs-item-fg-color: var(--color-accent-primary);
+  --tabs-item-fg-color-hover: var(--color-accent-primary);
+  background-color: var(--tabs-item-bg-color);
+  color: var(--tabs-item-fg-color);
+}
+
+.tab:hover {
+  --tabs-item-fg-color-hover: var(--tabs-item-fg-color-hover);
+  background: var(--tabs-item-bg-color-hover);
 }
